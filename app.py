@@ -81,6 +81,7 @@ def get_instructors():
     return json.dumps(
         instructors_dump
     )
+
 @app.route('/api/classes'):
 def get_classes():
     return json.dumps (
@@ -111,7 +112,7 @@ def get_classes():
     )
 
 @app.route('/api/roles'):
-def get_classes():
+def get_roles():
     return json.dumps (
         {
             "items" : [
