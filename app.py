@@ -34,7 +34,7 @@ def gmat_login():
     return json.dumps({"login_status":0, "login_message":"Login Failed"})
 
 @app.route('/api/intructors')
-def get_gmat_question_type():
+def get_instructors():
     return json.dumps(
     {
         "items": [
