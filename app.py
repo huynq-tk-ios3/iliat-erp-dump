@@ -33,6 +33,24 @@ def gmat_login():
             return json.dumps({"login_status":1, "login_message":"Login Success"})
     return json.dumps({"login_status":0, "login_message":"Login Failed"})
 
+@app.route('/api/intructors')
+def get_gmat_question_type():
+    return json.dumps(
+    {
+        "items": [
+            {
+                "name" : "Nguyen Son Vu",
+                "team" : "iOS"
+                "class" : ["iOS5", "iOS6"],
+                "code" : "002004",
+                "image" : [
+                    "small": "http://imgur.com/E3zFiyK",
+                    "large": "http://imgur.com/a/GyUUC"
+                ]
+            }
+        ]
+    })
+
 @app.route('/api/question_type')
 def get_gmat_question_type():
     return json.dumps({"type":
@@ -141,4 +159,3 @@ def get_gmat_version():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=9696)
-
