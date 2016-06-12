@@ -42,7 +42,7 @@ def get_instructors():
                     {
                         "name" : "Nguyen Son Vu",
                         "code" : "02004",
-                        "image" : "http://imgur.com/a/GyUUC",
+                        "image" : "http://i.imgur.com/mSCSREI.jpg?1",
                         "classes" : [
                             {
                                 "code" : "iOS5",
@@ -53,7 +53,26 @@ def get_instructors():
                                 "role" : ["instructor"]
                             }
                         ],
-                    }
+                    },
+                    {
+                        "name" : "Trinh Quang Dai",
+                        "code" : "02005",
+                        "image" : "http://i.imgur.com/7qab6QK.jpg",
+                        "classes" : [
+                            {
+                                "code" : "CI5",
+                                "role" : ["coach", "instructor"]
+                            },
+                            {
+                                "code" : "iOS6",
+                                "role" : ["instructor, coach"]
+                            },
+                            {
+                                "code" : "iOS7",
+                                "role" : ["instructor"]
+                            }
+                        ],
+                    },
                 ]
         }
     )
