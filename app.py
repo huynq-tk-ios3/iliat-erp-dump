@@ -40,7 +40,7 @@ def get_instructors():
         "items": [
             {
                 "name" : "Nguyen Son Vu",
-                "team" : "iOS"
+                "team" : "iOS",
                 "class" : ["iOS5", "iOS6"],
                 "code" : "002004",
                 "image" : [
