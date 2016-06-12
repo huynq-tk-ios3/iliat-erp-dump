@@ -41,7 +41,18 @@ def get_instructors():
                 "items" : [
                     {
                         "name" : "Nguyen Son Vu",
-                        "code" : "02004"
+                        "code" : "02004",
+                        "image" : "http://imgur.com/a/GyUUC",
+                        "classes" : [
+                            {
+                                "code" : "iOS5",
+                                "role" : ["coach", "instructor"]
+                            },
+                            {
+                                "code" : "iOS6",
+                                "role" : ["instructor"]
+                            }
+                        ],
                     }
                 ]
         }
