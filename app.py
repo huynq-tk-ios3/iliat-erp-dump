@@ -15,26 +15,6 @@ mongoengine.connect(db_name, host=host, port=port, username=user_name, password=
 
 app = Flask(__name__)
 
-def remove_dollar_sign(s):
-    OLD_OID = "$oid"
-    NEW_OID = "oid"
-    return s.replace(OLD_OID, NEW_OID)
-
-@app.route('/')
-def home_page():
-    return redirect('http://techkids.vn/')
-
-@app.route('/api/login', methods=['POST'])
-def login():
-    user_name = request.form['username'];
-    password = request.form['password'];
-    for user in User.objects(user_name=user_name):
-        if(user.password == password):
-            return json.dumps({"login_status":1, "login_message":"Login succeded"})
-    return json.dumps({"login_status":0, "login_message":"Login failed"})
-#                     "small": "http://imgur.com/E3zFiyK",
-#                     "large": "http://imgur.com/a/GyUUC"
-
 instructors_dump = {
         "items" : [
             {
@@ -76,13 +56,35 @@ instructors_dump = {
         ]
 }
 
+def remove_dollar_sign(s):
+    OLD_OID = "$oid"
+    NEW_OID = "oid"
+    return s.replace(OLD_OID, NEW_OID)
+
+@app.route('/')
+def home_page():
+    return redirect('http://techkids.vn/')
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    user_name = request.form['username'];
+    password = request.form['password'];
+    for user in User.objects(user_name=user_name):
+        if(user.password == password):
+            return json.dumps({"login_status":1, "login_message":"Login succeded"})
+    return json.dumps({"login_status":0, "login_message":"Login failed"})
+#                     "small": "http://imgur.com/E3zFiyK",
+#                     "large": "http://imgur.com/a/GyUUC"
+
+
+
 @app.route('/api/instructors')
 def get_instructors():
     return json.dumps(
         instructors_dump
     )
 
-@app.route('/api/classes'):
+@app.route('/api/classes')
 def get_classes():
     return json.dumps (
         {
@@ -111,7 +113,7 @@ def get_classes():
         }
     )
 
-@app.route('/api/roles'):
+@app.route('/api/roles')
 def get_roles():
     return json.dumps (
         {
