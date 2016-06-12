@@ -34,49 +34,52 @@ def gmat_login():
     return json.dumps({"login_status":0, "login_message":"Login Failed"})
 #                     "small": "http://imgur.com/E3zFiyK",
 #                     "large": "http://imgur.com/a/GyUUC"
+
+instructors_dump = {
+        "items" : [
+            {
+                "name" : "Nguyen Son Vu",
+                "code" : "02004",
+                "team" : "iOS",
+                "image" : "http://i.imgur.com/mSCSREI.jpg?1",
+                "classes" : [
+                    {
+                        "code" : "iOS5",
+                        "role" : ["coach", "instructor"]
+                    },
+                    {
+                        "code" : "iOS6",
+                        "role" : ["instructor"]
+                    }
+                ],
+            },
+            {
+                "name" : "Trinh Quang Dai",
+                "code" : "02005",
+                "team" : "iOS",
+                "image" : "http://i.imgur.com/7qab6QK.jpg",
+                "classes" : [
+                    {
+                        "code" : "CI5",
+                        "role" : ["coach", "instructor"]
+                    },
+                    {
+                        "code" : "iOS6",
+                        "role" : ["instructor, coach"]
+                    },
+                    {
+                        "code" : "iOS7",
+                        "role" : ["instructor"]
+                    }
+                ],
+            },
+        ]
+}
+
 @app.route('/api/instructors')
 def get_instructors():
     return json.dumps(
-        {
-                "items" : [
-                    {
-                        "name" : "Nguyen Son Vu",
-                        "code" : "02004",
-                        "team" : "iOS",
-                        "image" : "http://i.imgur.com/mSCSREI.jpg?1",
-                        "classes" : [
-                            {
-                                "code" : "iOS5",
-                                "role" : ["coach", "instructor"]
-                            },
-                            {
-                                "code" : "iOS6",
-                                "role" : ["instructor"]
-                            }
-                        ],
-                    },
-                    {
-                        "name" : "Trinh Quang Dai",
-                        "code" : "02005",
-                        "team" : "iOS",
-                        "image" : "http://i.imgur.com/7qab6QK.jpg",
-                        "classes" : [
-                            {
-                                "code" : "CI5",
-                                "role" : ["coach", "instructor"]
-                            },
-                            {
-                                "code" : "iOS6",
-                                "role" : ["instructor, coach"]
-                            },
-                            {
-                                "code" : "iOS7",
-                                "role" : ["instructor"]
-                            }
-                        ],
-                    },
-                ]
-        }
+        instructors_dump
     )
 # @app.route('/api/intructors')
 # def get_instructors():
