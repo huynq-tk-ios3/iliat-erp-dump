@@ -10,6 +10,7 @@ from flask import request
 import mongoengine
 
 
+
 from mlab import  *
 
 mongoengine.connect(db_name, host=host, port=port, username=user_name, password=password)
@@ -82,8 +83,9 @@ def get_instructors():
         instructors_dump
     )
 
-@app.route('/api/instructor?code=<instructor_code>')
+@app.route('/api/instructor')
 def get_instructor(instructor_code):
+    instructor_code = request.args.get("code")
     ret_list = []
     for instructor in instructors_dump["items"]:
         if instructor["code"] == instructor_code:
