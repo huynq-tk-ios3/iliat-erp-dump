@@ -32,11 +32,22 @@ def gmat_login():
         if(user.password == password):
             return json.dumps({"login_status":1, "login_message":"Login Success"})
     return json.dumps({"login_status":0, "login_message":"Login Failed"})
+#                     "small": "http://imgur.com/E3zFiyK",
+#                     "large": "http://imgur.com/a/GyUUC"
 @app.route('/api/intructors')
 def get_instructors():
     return json.dumps(
         {
-                "items": []
+                "items": [
+                    {
+                        "name" : "Nguyen Son Vu",
+                        "code": "02004",
+                        "images": [
+                            "large": "http://imgur.com/a/GyUUC",
+                            "small" : "http://imgur.com/E3zFiyK"
+                        ]
+                    }
+                ]
         }
     )
 # @app.route('/api/intructors')
