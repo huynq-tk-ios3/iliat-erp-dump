@@ -51,6 +51,10 @@ def get_instructors():
         ]
     })
 
+@app.route('/api/test-deploy')
+def test_deploy():
+    return "deploy 0.0.1"
+
 @app.route('/api/question_type')
 def get_gmat_question_type():
     return json.dumps({"type":
