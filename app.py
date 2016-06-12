@@ -38,14 +38,10 @@ def gmat_login():
 def get_instructors():
     return json.dumps(
         {
-                "items": [
+                "items" : [
                     {
                         "name" : "Nguyen Son Vu",
-                        "code": "02004",
-                        "images": [
-                            "large": "http://imgur.com/a/GyUUC",
-                            "small" : "http://imgur.com/E3zFiyK"
-                        ]
+                        "code" : "02004"
                     }
                 ]
         }
