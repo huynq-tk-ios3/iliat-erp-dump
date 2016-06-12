@@ -42,7 +42,7 @@ def get_instructors():
                     {
                         "name" : "Nguyen Son Vu",
                         "code" : "02004",
-                        "team" : "iOS"
+                        "team" : "iOS",
                         "image" : "http://i.imgur.com/mSCSREI.jpg?1",
                         "classes" : [
                             {
@@ -58,7 +58,7 @@ def get_instructors():
                     {
                         "name" : "Trinh Quang Dai",
                         "code" : "02005",
-                        "team" : "iOS"
+                        "team" : "iOS",
                         "image" : "http://i.imgur.com/7qab6QK.jpg",
                         "classes" : [
                             {
