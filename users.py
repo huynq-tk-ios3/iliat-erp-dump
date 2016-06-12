@@ -1,4 +1,4 @@
-from mongoengine import *
+from mongoengine import Document, StringField
 
 class User(Document):
     user_name = StringField(max_length=50)

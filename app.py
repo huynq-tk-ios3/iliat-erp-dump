@@ -9,8 +9,6 @@ import json
 from flask import request
 import mongoengine
 
-
-
 from mlab import  *
 
 mongoengine.connect(db_name, host=host, port=port, username=user_name, password=password)
@@ -27,13 +25,13 @@ def home_page():
     return redirect('http://techkids.vn/')
 
 @app.route('/api/login', methods=['POST'])
-def gmat_login():
+def login():
     user_name = request.form['username'];
     password = request.form['password'];
     for user in User.objects(user_name=user_name):
         if(user.password == password):
-            return json.dumps({"login_status":1, "login_message":"Login Success"})
-    return json.dumps({"login_status":0, "login_message":"Login Failed"})
+            return json.dumps({"login_status":1, "login_message":"Login succeded"})
+    return json.dumps({"login_status":0, "login_message":"Login failed"})
 #                     "small": "http://imgur.com/E3zFiyK",
 #                     "large": "http://imgur.com/a/GyUUC"
 

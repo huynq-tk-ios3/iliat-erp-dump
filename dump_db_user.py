@@ -13,11 +13,13 @@ if __name__ == "__main__":
     # user = User(user_name="android@hungdepzai.techkids.vn", password="123456")
     # user.save()
 
-    users = User.objects
-    for user in users:
-        print(remove_dollar_sign(user.to_json()))
-
-    admin_user = User.objects(user_name="admin")
+    # users = User.objects
+    # for user in users:
+    #     print(remove_dollar_sign(user.to_json()))
+    #
+    # admin_user = User.objects(user_name="admin")
     # for user in admin_user:
     #      print(remove_dollar_sign(user.to_json()))
+    user = User(user_name = "admin", password="admin")
+    user.save()
     db.close()
