@@ -33,23 +33,32 @@ def gmat_login():
             return json.dumps({"login_status":1, "login_message":"Login Success"})
     return json.dumps({"login_status":0, "login_message":"Login Failed"})
 
-@app.route('/api/intructors')
-def get_instructors():
-    return json.dumps(
-    {
-        "items": [
-            {
-                "name" : "Nguyen Son Vu",
-                "team" : "iOS",
-                "class" : ["iOS5", "iOS6"],
-                "code" : "002004",
-                "image" : [
-                    "small": "http://imgur.com/E3zFiyK",
-                    "large": "http://imgur.com/a/GyUUC"
-                ]
-            }
-        ]
-    })
+# @app.route('/api/intructors')
+# def get_instructors():
+#     return json.dumps(
+#     {
+#         "items": [
+#             {
+#                 "name" : "Nguyễn Sơn Vũ",
+#                 "team" : "iOS",
+#                 "classes" : [
+#                     {
+#                         "code" : "iOS5",
+#                         "role" : ["coach", "instructor"]
+#                     },
+#                     {
+#                         "code" : "iOS6",
+#                         "role" : ["instructor"]
+#                     }
+#                 ],
+#                 "code" : "002004",
+#                 "image" : [
+#                     "small": "http://imgur.com/E3zFiyK",
+#                     "large": "http://imgur.com/a/GyUUC"
+#                 ]
+#             }
+#         ]
+#     })
 
 @app.route('/api/test-deploy')
 def test_deploy():
