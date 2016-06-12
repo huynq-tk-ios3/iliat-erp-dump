@@ -84,7 +84,7 @@ def get_instructors():
     )
 
 @app.route('/api/instructor')
-def get_instructor(instructor_code):
+def get_instructor():
     instructor_code = request.args.get("code")
     ret_list = []
     for instructor in instructors_dump["items"]:
