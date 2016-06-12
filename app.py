@@ -81,6 +81,16 @@ def get_instructors():
     return json.dumps(
         instructors_dump
     )
+
+@app.route('/api/instructor?code=<instructor_code>')
+def get_instructor(instructor_code):
+    ret_list = []
+    for instructor in instructors_dump["items"]:
+        if instructor["code"] == instructor_code:
+            ret_list.append(instructor)
+    return json.dumps(
+        ret_list
+    )
 # @app.route('/api/intructors')
 # def get_instructors():
 #     return json.dumps(
