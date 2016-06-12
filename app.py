@@ -44,12 +44,12 @@ instructors_dump = {
                 "image" : "http://i.imgur.com/mSCSREI.jpg?1",
                 "classes" : [
                     {
-                        "code" : "iOS5",
-                        "role" : ["coach", "instructor"]
+                        "code" : "ios5",
+                        "role" : ["coach", "inst"]
                     },
                     {
-                        "code" : "iOS6",
-                        "role" : ["instructor"]
+                        "code" : "ios6",
+                        "role" : ["inst"]
                     }
                 ],
             },
@@ -60,19 +60,19 @@ instructors_dump = {
                 "image" : "http://i.imgur.com/7qab6QK.jpg",
                 "classes" : [
                     {
-                        "code" : "CI5",
-                        "role" : ["coach", "instructor"]
+                        "code" : "ci5",
+                        "role" : ["coach", "inst"]
                     },
                     {
-                        "code" : "iOS6",
-                        "role" : ["instructor, coach"]
+                        "code" : "ios6",
+                        "role" : ["inst, coach"]
                     },
                     {
-                        "code" : "iOS7",
-                        "role" : ["instructor"]
+                        "code" : "ios7",
+                        "role" : ["inst"]
                     }
                 ],
-            },
+            }
         ]
 }
 
@@ -81,7 +81,51 @@ def get_instructors():
     return json.dumps(
         instructors_dump
     )
+@app.route('/api/classes'):
+def get_classes():
+    return json.dumps (
+        {
+            "items" : [
+            {
+                "code" : "ios4",
+                "title": "iOS4"
+            },
+            {
+                "code" : "android5",
+                "title" : "Android 5"
+            },
+            {
+                "code" : "ci5",
+                "title" : "Code intensive 5"
+            },
+            {
+                "code" : "ios6",
+                "title" : "IOS 6"
+            },
+            {
+                "code" : "ios7",
+                "title" : "IOS 7"
+            }
+            ]
+        }
+    )
 
+@app.route('/api/roles'):
+def get_classes():
+    return json.dumps (
+        {
+            "items" : [
+            {
+                "code": "inst",
+                "title" : "Instructor"
+            },
+            {
+                "code": "coach",
+                "title" : "Coach"
+            }
+            ]
+        }
+    )
 @app.route('/api/instructor')
 def get_instructor():
     instructor_code = request.args.get("code")
