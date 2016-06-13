@@ -5,8 +5,8 @@ import json
 from flask import request, redirect
 import mongoengine
 
-from versions import Version
-from users import User
+from models.versions import Version
+from models.users import User
 from models.roles import Role
 
 from mlab import  *
@@ -20,7 +20,7 @@ instructors_dump = {
             {
                 "name" : "Nguyen Son Vu",
                 "code" : "02004",
-                "team" : "iOS",
+                "team" : "ios",
                 "image" : "http://i.imgur.com/mSCSREI.jpg?1",
                 "classes" : [
                     {
@@ -36,7 +36,7 @@ instructors_dump = {
             {
                 "name" : "Trinh Quang Dai",
                 "code" : "02005",
-                "team" : "iOS",
+                "team" : "ios",
                 "image" : "http://i.imgur.com/7qab6QK.jpg",
                 "classes" : [
                     {
@@ -56,7 +56,7 @@ instructors_dump = {
             {
                 "name" : "Tran Duc Hung",
                 "code" : "01002",
-                "team" : "Android",
+                "team" : "android",
                 "image" : "http://i.imgur.com/7qab6QK.jpg",
                 "classes" : [
                     {
@@ -91,7 +91,7 @@ instructors_dump = {
             {
                 "name" : "Ta Hoang Minh",
                 "code" : "02003",
-                "team" : "iOS",
+                "team" : "ios",
                 "image" : "http://i.imgur.com/7qab6QK.jpg",
                 "classes" : [
                     {
