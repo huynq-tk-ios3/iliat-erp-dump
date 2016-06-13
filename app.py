@@ -1,13 +1,13 @@
 from bson import ObjectId
 from flask import Flask
 
-from questions import Question, QuestionCollection
-from versions import Version
-from question_packs import QuestionPack, QuestionPackCollection
-from users import User
 import json
-from flask import request
+from flask import request, redirect
 import mongoengine
+
+from versions import Version
+from users import User
+from models.roles import Role
 
 from mlab import  *
 
@@ -52,6 +52,56 @@ instructors_dump = {
                         "role" : ["inst"]
                     }
                 ],
+            },
+            {
+                "name" : "Tran Duc Hung",
+                "code" : "01002",
+                "team" : "Android",
+                "image" : "http://i.imgur.com/7qab6QK.jpg",
+                "classes" : [
+                    {
+                        "code" : "ci54",
+                        "role" : ["inst"]
+                    },
+                    {
+                        "code" : "android3",
+                        "role" : ["inst, coach"]
+                    },
+                    {
+                        "code" : "android4",
+                        "role" : ["inst"]
+                    }
+                ],
+            },
+            {
+                "name" : "Bui Xuan Canh",
+                "code" : "01002",
+                "team" : "android",
+                "image" : "http://i.imgur.com/7qab6QK.jpg",
+                "classes" : [
+                    {
+                        "code" : "android1",
+                        "role" : ["inst"]
+                    },
+                    {
+                        "code" : "android3",
+                        "role" : ["inst"]
+                    }                ],
+            },
+            {
+                "name" : "Ta Hoang Minh",
+                "code" : "02003",
+                "team" : "iOS",
+                "image" : "http://i.imgur.com/7qab6QK.jpg",
+                "classes" : [
+                    {
+                        "code" : "ios4",
+                        "role" : ["inst"]
+                    },
+                    {
+                        "code" : "ios5",
+                        "role" : ["inst"]
+                    }                ],
             }
         ]
 }
@@ -117,16 +167,7 @@ def get_classes():
 def get_roles():
     return json.dumps (
         {
-            "items" : [
-            {
-                "code": "inst",
-                "title" : "Instructor"
-            },
-            {
-                "code": "coach",
-                "title" : "Coach"
-            }
-            ]
+            "items" : [role.to_json() for role in Role.objects]
         }
     )
 @app.route('/api/instructor')

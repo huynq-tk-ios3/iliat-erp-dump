@@ -1,4 +1,4 @@
-from mongoengine import *
+import mongoengine
 
 host = "ds019053.mlab.com"
 port = 19053
