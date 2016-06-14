@@ -25,11 +25,15 @@ instructors_dump = {
                 "classes" : [
                     {
                         "code" : "ios5",
-                        "role" : ["coach", "inst"]
+                        "role" : "inst"
+                    },
+                    {
+                        "code" : "ios5",
+                        "role" : "coach"
                     },
                     {
                         "code" : "ios6",
-                        "role" : ["inst"]
+                        "role" : "inst"
                     }
                 ],
             },
@@ -41,15 +45,23 @@ instructors_dump = {
                 "classes" : [
                     {
                         "code" : "ci5",
-                        "role" : ["coach", "inst"]
+                        "role" : "coach"
+                    },
+                    {
+                        "code": "ci5",
+                        "role": "inst"
                     },
                     {
                         "code" : "ios6",
-                        "role" : ["inst, coach"]
+                        "role" : "coach"
+                    },
+                    {
+                        "code" : "ios6",
+                        "role" : "inst"
                     },
                     {
                         "code" : "ios7",
-                        "role" : ["inst"]
+                        "role" : "inst"
                     }
                 ],
             },
@@ -61,15 +73,19 @@ instructors_dump = {
                 "classes" : [
                     {
                         "code" : "ci54",
-                        "role" : ["inst"]
+                        "role" : "inst"
                     },
                     {
                         "code" : "android3",
-                        "role" : ["inst, coach"]
+                        "role" : "coach"
+                    },
+                    {
+                        "code" : "android3",
+                        "role" : "inst"
                     },
                     {
                         "code" : "android4",
-                        "role" : ["inst"]
+                        "role" : "inst"
                     }
                 ],
             },
@@ -81,12 +97,13 @@ instructors_dump = {
                 "classes" : [
                     {
                         "code" : "android1",
-                        "role" : ["inst"]
+                        "role" : "inst"
                     },
                     {
                         "code" : "android3",
-                        "role" : ["inst"]
-                    }                ],
+                        "role" : "inst"
+                    }
+                ],
             },
             {
                 "name" : "Ta Hoang Minh",
@@ -96,12 +113,13 @@ instructors_dump = {
                 "classes" : [
                     {
                         "code" : "ios4",
-                        "role" : ["inst"]
+                        "role" : "inst"
                     },
                     {
                         "code" : "ios5",
-                        "role" : ["inst"]
-                    }                ],
+                        "role" : "inst"
+                    }
+                ],
             }
         ]
 }
