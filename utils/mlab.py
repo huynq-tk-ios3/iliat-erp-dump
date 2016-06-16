@@ -10,6 +10,7 @@ uri = "mongodb://admin:admin@ds019053.mlab.com:19053/erp-dump"
 db = None
 
 def connect():
+    global db
     db = mongoengine.connect(db_name, host=host, port=port, username=user_name, password=password)
 
 def disconnect():

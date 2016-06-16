@@ -8,6 +8,7 @@ import mongoengine
 from models.versions import Version
 from models.users import User
 from models.roles import Role
+from models.classes import  Class
 
 from mlab import  *
 
@@ -131,7 +132,7 @@ def remove_dollar_sign(s):
 
 @app.route('/')
 def home_page():
-    return redirect('http://techkids.vn/')
+    return redirect('localhost:9696')
 
 @app.route('/api/login', methods=['POST'])
 def login():
@@ -141,8 +142,7 @@ def login():
         if(user.password == password):
             return json.dumps({"login_status":1, "login_message":"Login succeded"})
     return json.dumps({"login_status":0, "login_message":"Login failed"})
-#                     "small": "http://imgur.com/E3zFiyK",
-#                     "large": "http://imgur.com/a/GyUUC"
+
 
 
 
@@ -154,30 +154,9 @@ def get_instructors():
 
 @app.route('/api/classes')
 def get_classes():
-    return json.dumps (
+    return json.dumps(
         {
-            "items" : [
-            {
-                "code" : "ios4",
-                "title": "iOS4"
-            },
-            {
-                "code" : "android5",
-                "title" : "Android 5"
-            },
-            {
-                "code" : "ci5",
-                "title" : "Code intensive 5"
-            },
-            {
-                "code" : "ios6",
-                "title" : "IOS 6"
-            },
-            {
-                "code" : "ios7",
-                "title" : "IOS 7"
-            }
-            ]
+            "items": [cl.to_json() for cl in Class.objects]
         }
     )
 
@@ -198,6 +177,13 @@ def get_instructor():
     return json.dumps(
         ret_list
     )
+@app.route('/api/instructor/add-teaching-record', methods=['POST'])
+def add_instructor_record():
+    instructor_code = request.form['code']
+    class_ = request.form['class']
+    role = request.form['role']
+    date = request.form['date']
+    return json.dumps({"status": 1, "message":"Record was added successfully"})
 
 @app.route('/api/test-deploy')
 def test_deploy():
