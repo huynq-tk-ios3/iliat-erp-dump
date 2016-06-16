@@ -140,8 +140,8 @@ def login():
     password = request.form['password'];
     for user in User.objects(user_name=user_name):
         if(user.password == password):
-            return json.dumps({"login_status":1, "login_message":"Login succeded"})
-    return json.dumps({"login_status":0, "login_message":"Login failed"})
+            return json.dumps({"result_code":1, "result_message":"Login succeded"})
+    return json.dumps({"result_code":0, "result_message":"Login failed"})
 
 
 
@@ -183,7 +183,7 @@ def add_instructor_record():
     class_ = request.form['class']
     role = request.form['role']
     date = request.form['date']
-    return json.dumps({"status": 1, "message":"Record was added successfully"})
+    return json.dumps({"result_code": 1, "result_message":"Record was added successfully"})
 
 @app.route('/api/test-deploy')
 def test_deploy():
