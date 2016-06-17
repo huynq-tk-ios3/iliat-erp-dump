@@ -132,7 +132,7 @@ def remove_dollar_sign(s):
 
 @app.route('/')
 def home_page():
-    return redirect('localhost:9696')
+    return redirect('http://localhost:9696')
 
 @app.route('/api/login', methods=['POST'])
 def login():
@@ -179,11 +179,14 @@ def get_instructor():
     )
 @app.route('/api/instructor/add-teaching-record', methods=['POST'])
 def add_instructor_record():
+    print("add_instructor_record")
     instructor_code = request.form['code']
     class_ = request.form['class']
     role = request.form['role']
     date = request.form['date']
-    return json.dumps({"result_code": 1, "result_message":"Record was added successfully"})
+    # print("Sending result")
+    return json.dumps({"result_code": 1, "result_message":"Record was added successfully",
+                       "record_id": "409824590237840578"})
 
 @app.route('/api/test-deploy')
 def test_deploy():
