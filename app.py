@@ -190,45 +190,27 @@ def add_instructor_record():
                        "record_id": "409824590237840578"})
 
 @app.route('/api/instructor/teaching-records', methods=['GET'])
+def get_teaching_record_by_code():
+    instructor_code = request.args['code']
+    return json.dumps(
+        {
+            "items": [record.to_json() for record in TeachingRecord.objects(instructor_code = instructor_code)]
+        }
+    )
+
+@app.route('/api/instructor/get-teaching-record', methods=['GET'])
 def get_teaching_records():
-    instructor_code = int(request.args["code"])
-    if instructor_code % 2:
+    if "instructor_code" in request.args:
         return json.dumps(
             {
-                "items" : [
-                    {
-                        "code": instructor_code,
-                        "class": "iOS 4",
-                        "date": "2016-06-06"
-                    },
-                    {
-                        "code": instructor_code,
-                        "class": "iOS 5",
-                        "date": "2016-06-07"
-                    },
-                    {
-                        "code": instructor_code,
-                        "class": "Code intensive 7",
-                        "date": "2016-06-07"
-                    }
-                ]
+                "items": [record.to_json() for record in TeachingRecord.objects(
+                    instructor_code = request.args["instructor_code"])]
             }
         )
     else:
         return json.dumps(
             {
-                "items" : [
-                    {
-                        "code": instructor_code,
-                        "class": "Android 4",
-                        "date": "2016-06-06"
-                    },
-                    {
-                        "code": instructor_code,
-                        "class": "Android 5",
-                        "date": "2016-06-07"
-                    }
-                ]
+                "items": [record.to_json() for record in TeachingRecord.objects]
             }
         )
 
