@@ -9,6 +9,7 @@ from models.versions import Version
 from models.users import User
 from models.roles import Role
 from models.classes import  Class
+from models.teachingrecords import TeachingRecord
 
 from mlab import  *
 
@@ -187,6 +188,14 @@ def add_instructor_record():
     # print("Sending result")
     return json.dumps({"result_code": 1, "result_message":"Record was added successfully",
                        "record_id": "409824590237840578"})
+
+@app.route('/api/instructor/get-teaching-record', methods=['GET'])
+def get_teaching_records():
+    return json.dumps(
+        {
+            "items": [cl.to_json() for cl in TeachingRecord.objects]
+        }
+    )
 
 @app.route('/api/test-deploy')
 def test_deploy():
