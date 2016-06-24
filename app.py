@@ -17,6 +17,7 @@ mongoengine.connect(db_name, host=host, port=port, username=user_name, password=
 
 app = Flask(__name__)
 
+
 instructors_dump = {
         "items" : [
             {
@@ -163,11 +164,10 @@ def get_classes():
 
 @app.route('/api/roles')
 def get_roles():
-    return json.dumps (
-        {
-            "items" : [role.to_json() for role in Role.objects]
-        }
-    )
+    class Collection(Document):
+        items = ListField(EmbeddedDocumentField("Role"))
+    return Collection(items = Role.objects).to_json()
+
 @app.route('/api/instructor')
 def get_instructor():
     instructor_code = request.args.get("code")
@@ -200,19 +200,17 @@ def get_teaching_record_by_code():
 
 @app.route('/api/instructor/get-teaching-record', methods=['GET'])
 def get_teaching_records():
+
+    class Collection(Document):
+        items = ListField(EmbeddedDocumentField("TeachingRecord"))
+
     if "instructor_code" in request.args:
-        return json.dumps(
-            {
-                "items": [record.to_json() for record in TeachingRecord.objects(
+        teaching_records = [record for record in TeachingRecord.objects(
                     instructor_code = request.args["instructor_code"])]
-            }
-        )
     else:
-        return json.dumps(
-            {
-                "items": [record.to_json() for record in TeachingRecord.objects]
-            }
-        )
+        teaching_records = [record for record in TeachingRecord.objects]
+
+    return Collection(items=teaching_records).to_json()
 
 @app.route('/api/test-deploy')
 def test_deploy():
