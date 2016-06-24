@@ -189,13 +189,48 @@ def add_instructor_record():
     return json.dumps({"result_code": 1, "result_message":"Record was added successfully",
                        "record_id": "409824590237840578"})
 
-@app.route('/api/instructor/get-teaching-record', methods=['GET'])
+@app.route('/api/instructor/teaching-records', methods=['GET'])
 def get_teaching_records():
-    return json.dumps(
-        {
-            "items": [cl.to_json() for cl in TeachingRecord.objects]
-        }
-    )
+    instructor_code = int(request.args["code"])
+    if instructor_code % 2:
+        return json.dumps(
+            {
+                "items" : [
+                    {
+                        "code": instructor_code,
+                        "class": "iOS 4",
+                        "date": "2016-06-06"
+                    },
+                    {
+                        "code": instructor_code,
+                        "class": "iOS 5",
+                        "date": "2016-06-07"
+                    },
+                    {
+                        "code": instructor_code,
+                        "class": "Code intensive 7",
+                        "date": "2016-06-07"
+                    }
+                ]
+            }
+        )
+    else:
+        return json.dumps(
+            {
+                "items" : [
+                    {
+                        "code": instructor_code,
+                        "class": "Android 4",
+                        "date": "2016-06-06"
+                    },
+                    {
+                        "code": instructor_code,
+                        "class": "Android 5",
+                        "date": "2016-06-07"
+                    }
+                ]
+            }
+        )
 
 @app.route('/api/test-deploy')
 def test_deploy():
