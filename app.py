@@ -75,7 +75,7 @@ instructors_dump = {
                 "image" : "http://i.imgur.com/7qab6QK.jpg",
                 "classes" : [
                     {
-                        "code" : "ci54",
+                        "code" : "ci5",
                         "role" : "inst"
                     },
                     {
