@@ -94,7 +94,7 @@ instructors_dump = {
             },
             {
                 "name" : "Bui Xuan Canh",
-                "code" : "01002",
+                "code" : "01004",
                 "team" : "android",
                 "image" : "http://i.imgur.com/7qab6QK.jpg",
                 "classes" : [
