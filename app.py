@@ -156,11 +156,9 @@ def get_instructors():
 
 @app.route('/api/classes')
 def get_classes():
-    return json.dumps(
-        {
-            "items": [cl.to_json() for cl in Class.objects]
-        }
-    )
+    class Collection(Document):
+        items = ListField(EmbeddedDocumentField("Class"))
+    return Collection(items = Class.objects).to_json()
 
 @app.route('/api/roles')
 def get_roles():

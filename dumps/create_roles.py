@@ -4,6 +4,8 @@ from models.roles import Role
 
 mlab.connect()
 
+for role in Role.objects():
+   role.delete()
 
 if len(Role.objects()) == 0:
    Role(code = "inst", title = "Instructor").save()
