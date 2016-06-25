@@ -1,6 +1,6 @@
 from bson import ObjectId
 from flask import Flask
-
+from bson import  ObjectId
 import json
 from flask import request, redirect
 import mongoengine
@@ -180,12 +180,31 @@ def get_instructor():
 def add_instructor_record():
     print("add_instructor_record")
     instructor_code = request.form['code']
-    class_ = request.form['class']
-    role = request.form['role']
+    class_code = request.form['class']
+    role_code = request.form['role']
     date = request.form['date']
-    # print("Sending result")
+    user_name = request.form['user_name']
+    teaching_record = TeachingRecord(instructor_code = instructor_code,
+                   role_code = role_code,
+                   class_code = class_code,
+                   date = date,
+                   user_name = user_name)
+    teaching_record.save()
     return json.dumps({"result_code": 1, "result_message":"Record was added successfully",
-                       "record_id": "409824590237840578"})
+                       "record_id": str(teaching_record.id) })
+
+@app.route('/api/instructor/delete-teaching-record', methods=['POST'])
+def delete_instructor_record():
+    print("delete_instructor_record")
+    record_id = request.form['record_id']
+    foundTeachingRecords = TeachingRecord.objects(id = record_id)
+    if len(foundTeachingRecords) > 0:
+        foundTeachingRecords[0].delete()
+        return json.dumps({"result_code": 1, "result_message":"Record was deleted successfully",
+                       "record_id": record_id })
+    else:
+        return json.dumps({"result_code": 0, "result_message": "Could not find the record",
+                           "record_id": record_id})
 
 @app.route('/api/instructor/teaching-records', methods=['GET'])
 def get_teaching_record_by_code():
