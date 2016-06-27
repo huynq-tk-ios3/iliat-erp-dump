@@ -205,6 +205,10 @@ def delete_instructor_record():
     else:
         return json.dumps({"result_code": 0, "result_message": "Could not find the record",
                            "record_id": record_id})
+@app.route('/api/instructor/update-teaching-record', methods=['POST'])
+def update_instructor_record():
+    return json.dumps({"result_code": 1, "result_message": "Record was updated successfully",
+                           "record_id": ""})
 
 @app.route('/api/instructor/teaching-records', methods=['GET'])
 def get_teaching_record_by_code():
